@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty Products Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<header>
+<h2>"WELCOME TO SANIKA's MAKEOVER"</h2>
+</header>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        background-image: url("https://static.vecteezy.com/system/resources/previews/037/246/944/non_2x/ai-generated-make-up-products-advertisment-background-with-copy-space-free-photo.jpg"); /* Add your background image path here */
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .small-image {
+        position: absolute;
+        width: 250px;
+        height: 180px;
+        border-radius: 90%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: white;
+    }
+
+    /* Positioning the small images */
+    .small-image1 {
+        top: 10%;
+        left: 15%;
+    }
+
+    .small-image2 {
+        top: 40%;
+        right: 10%;
+    }
+
+    .small-image3 {
+        bottom: 20%;
+        left: 5%;
+    }
+
+    .login-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+        z-index: 1; /* To ensure the form is on top of images */
+        position: relative;
+    }
+
+    h2 {
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        text-align: left;
+        color: #555;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+        border-color: #ff9a9e;
+        outline: none;
+    }
+
+    .btn-login {
+        background-color: #ff9a9e;
+        color: white;
+        border: none;
+        padding: 10px;
+        width: 100%;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-login:hover {
+        background-color: #ff748a;
+    }
+
+    .signup-link {
+        margin-top: 10px;
+        color: #555;
+    }
+
+    .signup-link a {
+        color: #ff748a;
+        text-decoration: none;
+    }
+</style>
+
+<body>
+    <!-- Small images floating on the page -->
+    <div class="small-image small-image1">
+        <img src="https://orchidlifesciences.com/wp-content/uploads/2024/06/01-14-01-1024x704.jpg" alt="P1" style="width:100%; height:100%; border-radius:50%;">
+    </div>
+    <div class="small-image small-image2">
+        <img src="https://www.verthpc.com/templates/vert/img/home-page/Website-Banners-Mobile-Fresg.jpg" alt="P2" style="width:100%; height:100%; border-radius:50%;">
+    </div>
+    <div class="small-image small-image3">
+        <img src="https://www.lindobeautycare.in/product-images/0T0A9925.JPG/369677000000072213/700x700" alt="Product 3" style="width:100%; height:100%; border-radius:50%;">
+    </div>
+
+    <div class="login-container">
+        <h2>Login/Register</h2>      
+        <form id="loginForm" class="login-form">
+            <div class="input-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <button type="submit" class="btn-login" a href="products.html">Login</button></a>
+            </div>
+            <p id="error-message" style="color:red;"></p>
+        </form>
+    </div>
+</body>
+</html>
+<script>
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    let username = document.getElementById('username').value;
+    let password = document.getElementById('password').value;
+    let errorMessage = document.getElementById('error-message');
+    
+    // Basic Validation
+    if (username === '' || password === '') {
+        errorMessage.textContent = 'Please fill in all fields.';
+    } else if (username.length < 3) {
+        errorMessage.textContent = 'Username must be at least 3 characters.';
+    } else if (password.length < 6) {
+        errorMessage.textContent = 'Password must be at least 6 characters.';
+    } else {
+        errorMessage.textContent = 'Fill the information';
+        // Simulate successful login
+        alert('Login Successful!');
+        // Redirect to the dashboard or homepage
+        window.location.href = 'home.html';
+    }
+});
+</script>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Book an Appointment</h1>
+        <nav>
+            <a href="products.html">Shop Products</a>
+        </nav>
+    </header>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("https://appointible.com/wp-content/uploads/2022/12/make-up-artist-salon-styling-eyes-1024x683.png.webp");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background-color: rgba(255, 154, 158, 0.6); /* Add slight transparency */
+            color: white;
+            padding: 10px;
+            text-align: center;
+            width: 80%;
+        }
+
+        nav a {
+            color: black;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        .appointment-form {
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.5); 
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        button.btn {
+            background-color: #ff748a;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        button.btn:hover {
+            background-color: #ff9a9e;
+        }
+    </style>
+
+    <section class="appointment-form">
+        <h2>Book a Beauty Consultation</h2>
+        <form id="appointmentForm">
+            <p><label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <br><label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required>
+
+            <p> <label for="date">Select Date:</label><br>
+            <input type="date" id="date" name="date" required></p>
+
+            <p> <label for="time">Select Time:</label><br></p>
+            <input type="time" id="time" name="time" required>
+
+            <br><button type="submit" class="btn">Book Appointment</button><br>
+        </form>
+        <p id="confirmation-message"></p>
+    </section>
+
+    <script>
+    document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+        event.preventDefault();  // Prevent the form from submitting in the traditional way
+
+        // Get the form values (you can also use these for validation or sending data to a server)
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
+
+        // Display a confirmation message
+        const confirmationMessage = document.getElementById('confirmation-message');
+        confirmationMessage.textContent = `The appointment is booked for ${name} on ${date} at ${time}.`;
+        confirmationMessage.style.color = 'green';  // Optionally, you can style the message
+    });
+    </script>
+</body>
+</html>

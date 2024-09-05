@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Now - Order Summary</title>
+</head>
+<body>
+    <header>
+        <h1>Your Cart</h1>
+        <a href="index.html">Continue Shopping</a>
+    </header>
+
+    <section id="cart-items">
+        <h2>Items in Cart</h2>
+        <ul id="item-list"></ul>
+        <p>Total Amount: ₹<span id="total-amount">0</span></p>
+        <button onclick="checkout()">Checkout</button>
+    </section>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .form-container, .payment-details {
+            max-width: 400px;
+            margin: auto;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 9px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"], input[type="month"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .pay-now-btn, .pay-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            width: 100%;
+        }
+        .pay-now-btn:hover, .pay-btn:hover {
+            background-color: #218838;
+        }
+        .form-actions {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+     
+    <!-- Order Summary Section -->
+    <div class="payment-details">
+        <h2>Order Summary</h2>
+        <p>Total Items: <span id="total-items">0</span></p>
+        <p>Total Price: ₹<span id="final-price">0</span></p>
+        <button class="pay-btn" onclick="proceedToPayment()">Proceed to Payment</button>
+    </div>
+
+    <!-- Payment Form Section -->
+    <div class="form-container">
+        <h2>Pay Now</h2>
+        <form action="/submit_payment" method="post">
+            <label for="payment-method">Choose Payment Method:</label>
+            <input type="radio" name="payment-method" value="card" required> Credit or Debit card&nbsp;&nbsp;</br>
+            <input type="radio" name="payment-method" value="netbanking" required> Pay with Net Banking<br/>
+            <input type="radio" name="payment-method" value="paypal" required> PayPal <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/PayPal_Logo2014.png" width="50px" height="30px"</br>
+
+            <label for="name">Name on Card</label>
+            <input type="text" id="name" name="name" placeholder="Name on Card" required>
+
+            <label for="card-number">Card Number</label>
+            <input type="number" id="card-number" name="card-number" placeholder="Card Number" required>
+
+            <label for="expiry">Expiry Date</label>
+            <input type="month" id="expiry" name="expiry" required>
+
+            <label for="security-code">Security Code</label>
+            <input type="number" id="security-code" name="security-code" placeholder="Security Code" required>
+
+            <input id="taccheck" type="checkbox" required> I agree to the <a href="#">Terms and Conditions</a>.<br/><br/>
+
+            <div class="form-actions">
+<button type="submit" class="pay-now-btn">Pay Now</butto>
+<script>
+        // Fetch cart count and total price from localStorage or sessionStorage (can be implemented based on requirement)
+        const totalItems = localStorage.getItem('cartCount') || 0;
+        const totalPrice = localStorage.getItem('totalPrice') || 0;
+
+        document.getElementById('total-items').textContent = totalItems;
+        document.getElementById('final-price').textContent = totalPrice;
+
+        function proceedToPayment() {
+            alert('Proceeding to payment!');
+        }
+
+        // Add to Cart logic (from a previous page, storing cart items and price in localStorage)
+        function addToCart(item, price) {
+            let cartCount = parseInt(localStorage.getItem('cartCount')) || 0;
+            let totalPrice = parseInt(localStorage.getItem('totalPrice')) || 0;
+
+            cartCount++;
+            totalPrice += price;
+
+            document.getElementById('cart-count').textContent = cartCount;
+            document.getElementById('total-price').textContent = totalPrice;
+
+            // Save to localStorage
+            localStorage.setItem('cartCount', cartCount);
+            localStorage.setItem('totalPrice', totalPrice);
+        }
+
+// Get cart items from localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let totalAmount = 0;
+
+        const itemList = document.getElementById('item-list');
+        const totalAmountElement = document.getElementById('total-amount');
+
+        // Display cart items
+        cart.forEach(item => {
+            const li = document.createElement('li');
+            li.innerText = `${item.name} - ₹${item.price}`;
+            itemList.appendChild(li);
+            totalAmount += item.price;
+        });
+
+        // Update total amount
+        totalAmountElement.innerText = totalAmount;
+
+        // Checkout function
+        function checkout() {
+            alert('Payment Successful! Your total is ₹' + totalAmount);
+            localStorage.removeItem('cart');  // Clear the cart after checkout
+            window.location.href = 'index.html';  // Redirect to home page
+        }
+    </script>
+</body>
+</html>

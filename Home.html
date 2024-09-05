@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Products & Makeovers</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Home Beauty Products - Shop Now</h1>
+        <nav>
+          <a href="index.html">Home</a><br>
+            <a href="appointment.html">Book Appointment</a><br>
+            <a href="payment.html">View Cart</a><br>
+        </nav>
+<style>
+.makeovers {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.makeover-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.makeover {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ff748a;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.book-btn:hover {
+    background-color: #ff9a9e;
+}
+</style>
+    </header>
+
+    <section class="products">
+        <h2>Our Products</h2>
+        <div class="product-grid">
+            <div class="product">
+                <img src="https://www.laurensnaturalliving.com/cdn/shop/products/image_fdbd4284-716c-455b-ba12-8e2b81d3282d_300x300.jpg?v=1567207402" alt="P1">
+                <h3>Moisturizing Cream</h3>
+                <p>Keeps skin soft and silky, no stickiness with natural ingredients.</p>
+                <p>₹450</p>
+                <button class="buy-btn" onclick="addToCart('Moisturizing Cream')">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <img src="https://images-eu.ssl-images-amazon.com/images/I/614E8zI1j7L._AC_UL210_SR210,210_.jpg" alt="P2">
+                <h3>Lipstick</h3>
+                <p>Gluten-free, natural colors with a pleasant fragrance.</p>
+                <p>₹750</p>
+                <button class="buy-btn" onclick="addToCart('Lipstick')">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSl6eo3ixSRnMdcKsR0L_Gww2dM1_3YHhhcqA&s" alt="P4">
+                <h3>Kajal and Eyeliner</h3>
+                <p>Made with pure natural charcoal and organic ingredients.</p>
+                <p>₹400</p>
+                <button class="buy-btn" onclick="addToCart('Kajal and Eyeliner')">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Section: Types of Makeover -->
+    <section class="makeovers">
+        <h2>Types of Makeover</h2>
+        <div class="makeover-grid">
+            <div class="makeover">
+                <h3>Bridal Makeover</h3>
+                <p>Get a stunning bridal look with personalized styling for your big day.</p>
+                <a href="https://static.wixstatic.com/media/4c52d5_ea7f9fda785945728ad09d8e71e76676~mv2.png/v1/fill/w_560,h_792,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/Price%20List%20Sid%20Edit.png" class="book-btn">Book Bridal Makeover</a>
+            </div>
+
+            <div class="makeover">
+                <h3>Party Makeover</h3>
+                <p>Shine at any party with a glamorous and long-lasting makeup look.</p>
+                <a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.lofficielusa.com%2Fbeauty%2F7-ways-to-wear-red-lipstick-makeup-looks&psig=AOvVaw0wk48ahqa70Ji8SP3UKOHu&ust=1725624181799000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPicsr3hq4gDFQAAAAAdAAAAABAE" class="book-btn">Book Party Makeover</a>
+            </div>
+
+            <div class="makeover">
+                <h3>Casual Makeover</h3>
+                <p>A natural, everyday look that enhances your beauty effortlessly.</p>
+                <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQA7eHV2fqV4Tv0S24W6B_Xko2d4Sp_rUd4A&s" class="book-btn">Book Casual Makeover</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Your Cart: <span id="cart-count">0</span> items</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
